@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour{
-
+    
+    [Range(0.1f, 12f)]
     [SerializeField] float secondsBetweenSpaens=4f;
     [SerializeField] EnemyMovement enemyPrefab;
 
@@ -15,9 +16,9 @@ public class EnemySpawner : MonoBehaviour{
 
     IEnumerator RepeatedlySpawnEnemies() {
 
-        while (true) {  //sempre
-            yield return new WaitForSeconds(secondsBetweenSpaens);
+        while (true) {
             Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(secondsBetweenSpaens);
         }
         
     }

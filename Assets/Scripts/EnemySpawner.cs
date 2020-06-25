@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour{
 
     IEnumerator RepeatedlySpawnEnemies() {
 
-        while (true) {
+        while (true) {  //sempre
             yield return new WaitForSeconds(secondsBetweenSpaens);
             Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
         }

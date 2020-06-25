@@ -10,14 +10,13 @@ public class EnemySpawner : MonoBehaviour{
 
     void Start(){
 
-        StartCoroutine(SpawnEnemy());
-        
+        StartCoroutine(RepeatedlySpawnEnemies());
     }
 
-    IEnumerator SpawnEnemy() {
+    IEnumerator RepeatedlySpawnEnemies() {
         yield return new WaitForSeconds(secondsBetweenSpaens);
         Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
-        StartCoroutine(SpawnEnemy());
+        StartCoroutine(RepeatedlySpawnEnemies());
     }
 
     // Update is called once per frame

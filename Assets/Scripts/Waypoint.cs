@@ -6,6 +6,7 @@ using UnityEngine.PlayerLoop;
 public class Waypoint    : MonoBehaviour{
 
     [SerializeField] Color exploredColor;
+    [SerializeField] Tower towerPrefab;
 
     //public ok because is a data class
     public bool isExplored=false;
@@ -32,8 +33,10 @@ public class Waypoint    : MonoBehaviour{
 
     private void OnMouseOver() {
         if (Input.GetMouseButtonDown(0)) {
-            if (isPlaceable) {
+            if (isPlaceable ) {
                 print(gameObject.name + " clicked");
+                Instantiate(towerPrefab, gameObject.transform.position, Quaternion.identity);
+                isPlaceable = false;
             }
             else {
                 print("cant place here!");  

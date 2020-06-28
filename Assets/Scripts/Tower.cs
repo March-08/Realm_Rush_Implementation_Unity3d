@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour{
-    //mod B
 
     //parameters
     [SerializeField] Transform objectToPan;

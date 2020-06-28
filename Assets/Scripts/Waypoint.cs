@@ -10,6 +10,7 @@ public class Waypoint    : MonoBehaviour{
     //public ok because is a data class
     public bool isExplored=false;
     public Waypoint exploredFrom;
+    public bool isPlaceable = true;
 
     Vector2Int gridPos;
     const int gridSize = 10;
@@ -28,14 +29,16 @@ public class Waypoint    : MonoBehaviour{
             );
     }
 
-    public void SetTopColor(Color color) {
-        MeshRenderer topMeshRenderer= transform.Find("Top").GetComponent<MeshRenderer>();
-        topMeshRenderer.material.color = color;
-    }
 
-    // Update is called once per frame
-    void Update(){
-      
-        
+    private void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0)) {
+            if (isPlaceable) {
+                print(gameObject.name + " clicked");
+            }
+            else {
+                print("cant place here!");  
+            }
+
+        }
     }
 }

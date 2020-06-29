@@ -27,7 +27,7 @@ public class TowerFactory : MonoBehaviour{
 
     private  void MoveExistingTower(Waypoint baseWaypoint) {
         var oldTower = towerQueue.Dequeue();
-        // tofo
+        // todp
         towerQueue.Enqueue(oldTower);
 
     }

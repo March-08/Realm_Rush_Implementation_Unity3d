@@ -44,8 +44,8 @@ public class PathFinder : MonoBehaviour{
         print("previous: " +previous);
         while (previous != startWaypoint) {
 
-            previous = previous.exploredFrom;
             SetAsPath(previous);    
+            previous = previous.exploredFrom;
 
         }
 

@@ -10,7 +10,16 @@ public class EnemyDamage : MonoBehaviour{
     [SerializeField] ParticleSystem deathParticlePrefab;
 
     void Start(){
-        
+        if (GameObject.Find("VFXContainer")){
+            deathParticlePrefab.transform.SetParent(GameObject.Find("VFXContainer").transform);
+
+        }
+        else {
+            GameObject VFXContainer=new GameObject("VFXContainer");
+            deathParticlePrefab.transform.SetParent(VFXContainer.transform);
+
+        }
+
     }
 
     private void OnParticleCollision(GameObject other) {
@@ -28,6 +37,8 @@ public class EnemyDamage : MonoBehaviour{
     void KillEnemy() {
         ParticleSystem vfx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
         vfx.Play();
+        float destroyDelay = vfx.main.duration;
+        Destroy(vfx.gameObject, destroyDelay);
         Destroy(gameObject);
         
     }

@@ -6,6 +6,7 @@ public class TowerFactory : MonoBehaviour{
 
     [SerializeField] Tower towerPrefab;
     [SerializeField] int towerLimit=5;
+    [SerializeField] GameObject towerParentTransform;    
     Queue<Tower> towerQueue = new Queue<Tower>();
 
     public Waypoint baseWaypoint;   //where the tower is standing on
@@ -25,18 +26,30 @@ public class TowerFactory : MonoBehaviour{
 
     }
 
-    private  void MoveExistingTower(Waypoint baseWaypoint) {
+    private  void MoveExistingTower(Waypoint newBaseWaypoint) {
         var oldTower = towerQueue.Dequeue();
-        // todp
+        
+        oldTower.baseWaypoint.isPlaceable = true;
+        newBaseWaypoint.isPlaceable = false;
+        oldTower.baseWaypoint = newBaseWaypoint;
+        oldTower.transform.position = newBaseWaypoint.transform.position;
+
         towerQueue.Enqueue(oldTower);
+
+
 
     }
 
     private void InstantiateNewTower(Waypoint baseWaypoint) {
         var newTower=Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity);
+        newTower.transform.SetParent(towerParentTransform.transform);
         baseWaypoint.isPlaceable = false;
         numTowers += 1;
+        newTower.baseWaypoint = baseWaypoint;
+        baseWaypoint.isPlaceable = false;
         towerQueue.Enqueue(newTower);
+
+
 
     }
 

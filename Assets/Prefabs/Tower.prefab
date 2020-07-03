@@ -48,7 +48,9 @@ MonoBehaviour:
   objectToPan: {fileID: 1312731437414376054}
   projectileParticle: {fileID: 1880377274}
   attackRange: 30
+  baseWaypoint: {fileID: 0}
   targetEnemy: {fileID: 0}
+  towerFire: {fileID: 8300000, guid: 723726f75c29f6f4ab367d683628b1c1, type: 3}
 --- !u!1001 &1313168765618705950
 PrefabInstance:
   m_ObjectHideFlags: 0

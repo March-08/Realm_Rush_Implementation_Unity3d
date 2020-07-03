@@ -34,7 +34,7 @@ public class EnemyDamage : MonoBehaviour{
         hitParticlePrefab.Play();
     }
 
-    void KillEnemy() {
+    public void KillEnemy() {
         ParticleSystem vfx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
         vfx.Play();
         float destroyDelay = vfx.main.duration;
